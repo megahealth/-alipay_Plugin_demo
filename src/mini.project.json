@@ -1,0 +1,16 @@
+{
+  "miniprogramRoot": "miniprogram",
+  "pluginRoot": "plugin",
+  "compileType": "plugin",
+  "enableAppxNg": true,
+  "settings": {
+    "es6": {
+      "enableNodeModuleBabelTransform": true,
+      "node_modules_es6_whitelist": [
+        "@tarojs/taro",
+        "@tarojs/shared",
+        "@tarojs/runtime"
+      ]
+    }
+  }
+}
