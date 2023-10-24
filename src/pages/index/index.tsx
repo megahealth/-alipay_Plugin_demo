@@ -215,6 +215,11 @@ const Index = () => {
 
     //cdk 初始化
     const init = async () => {
+
+        const AppId = 'ZURNaXgbXw'
+        const AppKey = '&e)CPKK?z;|p0V3'
+        //ble搜索初始化
+
         // @ts-ignore
         await initSdk(AppId, AppKey, my).then((bleClient: any) => {
             bleClient.setCallback(callBack());

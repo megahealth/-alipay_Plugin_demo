@@ -2,8 +2,8 @@
   "miniprogramRoot": "./dist",
   "projectname": "ali-plugin",
   "description": "支付宝的小程序插件",
-  "pluginRoot":"plugin/",
-  "compileType":"plugin",
+  "pluginRoot": "plugin/",
+  "compileType": "plugin",
   "appid": "touristappid",
   "setting": {
     "urlCheck": true,

@@ -29,7 +29,7 @@
 3. 使用MegaBleScanner，进行扫描，得到目标device，扫描到device需要执行stopScan停止扫描
 4. client连接device，等待连接成功
 6. 绑定戒指(首次连或token不匹配，需要晃动戒指才能连上。收到token后，用token连即可跳过晃动)
-  - 非绑定设备状态下: client.startWithToken('5837288dc59e0d00577c5f9a', '0,0,0,0,0,0')
+  - 非绑定设备状态下: client.startWithoutToken('5837288dc59e0d00577c5f9a', mac)
   - 已绑定设备状态下: client.startWithToken('5837288dc59e0d00577c5f9a', token)
   - 注意：如果token不匹配，戒指之前的监测就会停止（数据还在，收取报告会上传）。
 
@@ -133,6 +133,7 @@ genMegaCallback(){
 // 上面扫描操作后会得到一个devices列表，去其中一个device进行连接，使用初始化插件的到的client中的connect方法。
 //client.connect 可用来重新连接超时
 client.connect(device.name, device.deviceId, device.advertisData).then(res => {
+
     // get cached token, '5837288dc59e0d00577c5f9a' will always be ok to use.
     // 绑定戒指(首次连或token不匹配，需要晃动戒指才能连上。收到token后，用token连即可跳过晃动)
    	if (token) {
@@ -150,7 +151,6 @@ client.connect(device.name, device.deviceId, device.advertisData).then(res => {
 const onSyncMonitorDataComplete = (res) => {
 	//拿到数据 拿到res的objectId
 }
-
 //使用上传数据获取的objectId去解析数据 
 client.parseReport（objectId).then((res)=>{})
 //获取报告
@@ -362,16 +362,18 @@ getReport.getReport(optins).then((res)=>{})
 
 **插件的使用方法**
 
-1.引入app.json
+1.引入
 
 ````json
-"plugins":{
+app.json
+  "plugins":{
       "megable":
         {
           "version":"*", //最新
           "provider":"" //插件id
         }
-}
+  }
+ 
 ````
 
 2.js使用
@@ -380,11 +382,11 @@ getReport.getReport(optins).then((res)=>{})
    const myPlugin = requirePlugin('megable');
 ````
 
-3.配置url
+3.url
 
-````
+```
 https://api-mhn.megahealth.cn/   //cdk验证
 https://server-mhn.megahealth.cn  //报告接口
 https://raw.megahealth.cn/     //解析报告接口
-````
+```
 
