@@ -207,6 +207,10 @@ getReport.getReport(optins).then((res)=>{})
 
     拿到可用来解析的报告objectId
 
+  - quickReport
+
+    快速收取报告，版本需要大于12048
+
   - getReport(option)
 
     option：{page:分页，limit：条数}
@@ -216,12 +220,6 @@ getReport.getReport(optins).then((res)=>{})
   - parseReport(objectId)
 
     解析对应的报告，objectId上传以及查看报告获取到的objectId
-
-  - enableRawdata()
-
-    调试接口，一般用不到
-  
-  - disableRawdata()
   
   - disconnect()
   
@@ -286,6 +284,10 @@ getReport.getReport(optins).then((res)=>{})
 
     - 没有监测数据可供同步
 
+  -  onReportError: () => {}
+
+    ​	数据收取失败回调
+
   - onV2LiveSleep: v2LiveSleep => {}
 
     收到血氧监测模式live数据; status参考STATUS_LIVE列表
@@ -299,15 +301,15 @@ getReport.getReport(optins).then((res)=>{})
     - 设置用户信息 【 必须预设一个用户信息，否者每次连接都会被认为是新用户 ，提示晃动戒指】
 
   - onSetUserInfo() { client.setUserInfo(25, 1, 170, 60, 0 ) } 年龄、性别、身高、体重、步长
-
+  
   - onIdle: () => {}
-
+  
   连接进入空闲
   - onDeviceInfoUpdated: deviceInfo => {},
-
+  
   onidle 触发前的 onDeviceInfoUpdated，有isRunning，代表处于监测模式
   - onRawdataReceiving: (count, bleCount, rawdataDuration) => {}
-
+  
   - onRawdataComplete: info => {},
     onDfuProgress: progress => {}
 
